@@ -1,0 +1,84 @@
+# CCM-to-RTC migration configuration file
+
+# ccm.host - CCM host 
+#
+mt_config.ccm.host						= 'spvtgccm5'
+
+# ccm.db - CCM database
+#
+mt_config.ccm.db						= '/data/ccmdb/atl_client_db'
+
+# ccm.project - CCM working project %displayname.
+#
+mt_config.ccm.project                   = 'NGP-Diagnostics,atl=sherzing:project:cup=1'
+
+# ccm.work_area - location of work area associated with ccm.project.
+#
+mt_config.ccm.work_area                 = '/home/sherzing/mt-diag/ccm'
+
+# ccm.baseline_initial - first baseline to be migrated.
+# when the migration tool is launched, this baseline has already been manually
+# migrated into RTC.
+#
+mt_config.ccm.baseline_initial          = 'cup=NGP_DIAGNOSTICS_1.0.47.1'
+
+# ccm.release - the name of the CCM release that is being migrated.
+#
+mt_config.ccm.release                   = 'NGP-Diag/Initial'
+
+# ccm.purposes - list of baseline purposes
+#                (comma-separated list of strings, surrounded by brackets)
+#
+#
+mt_config.ccm.purposes = [
+    "System Testing",
+	"Sqa Binary Extractions"
+]
+
+
+# rtc.host - JTS host
+#            (test server:       'rtp-scmrtc-ccm1.cisco.com'
+#             production server: 'cornet-jts1.cisco.com')
+#
+mt_config.rtc.host						= 'rtp-scmrtc-ccm1.cisco.com'
+
+# rtc.root - JTS application root
+#            (usually 'ccm1' for test server, 'ccm' for production server)
+#
+mt_config.rtc.root						= 'ccm1'
+
+# rtc.project - RTC project area.
+#
+mt_config.rtc.project                   = 'NGP-Diag'
+
+# rtc.stream - RTC stream name into which ccm.release is being migrated.
+#
+mt_config.rtc.stream                    = 'Initial'
+
+# rtc.workspace - name of repository workspace used for migration
+#
+mt_config.rtc.workspace                 = 'Initial-WS'
+
+# rtc.sandbox - where to load repository workspace
+# 
+mt_config.rtc.sandbox                   = '/home/sherzing/mt-diag/rtc'
+
+# rtc.work_item - migration work item
+# all migrated tasks/change sets are associated with this work item.
+#
+mt_config.rtc.work_item                 = '1804'
+
+# rtc.ccm_versions - where to save task object predecessors
+# if this directory is a versionable location, predecessors will be
+# checked in to RTC. this may or may not be good. these files are
+# never touched again, so they are stored in full, which could
+# defeat the purpose of normal delta storage in the repository.
+#
+# this directory is interpreted relative to rtc.sandbox, above.
+#
+# for example:
+#
+# mt_config.rtc.ccm_versions            = 'NGP-Diagnostics/ccm'
+# mt_config.rtc.ccm_versions            = 'ccm'
+#
+mt_config.rtc.ccm_versions              = 'ccm'
